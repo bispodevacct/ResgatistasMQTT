@@ -16,6 +16,8 @@ client.on('error', (err) => {
 });
 
 client.on('connect', () => {
+    console.log('Sucesso ao se conectar1');
+    
     const geo = new Geo();
 
     setInterval(() => {
