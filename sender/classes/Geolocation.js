@@ -1,4 +1,4 @@
-class Geo {
+class Geolocation {
     constructor() {
         this.latitude = 0;
         this.longitude = 0;
@@ -13,7 +13,8 @@ class Geo {
                 this.longitude = position.coords.longitude;
             });
         }
+        return this
     }
 }
 
-export default Geo;
+export default Geolocation;

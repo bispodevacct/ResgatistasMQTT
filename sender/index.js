@@ -1,5 +1,5 @@
 import credentials from "../credentials.js";
-import Geo from "./classes/Geo.js";
+import Geolocation from "./classes/Geolocation.js";
 
 const {username, password, hivemq} = credentials;
 
@@ -11,26 +11,20 @@ const options = {
 
 const client = mqtt.connect(hivemq, options);
 
-const geo = new Geo();
+const geolocation = new Geolocation();
+
+const sendGeolocation = () => {
+	const {latitude, longitude} = geolocation.updateLocation();
+	client.publish('geolocation', JSON.stringify(geolocation));
+	console.log(`Enviando localização! (${latitude}, ${longitude})`);
+}
 
 client.subscribe('geolocation');
 
-client.on('error', err => {
-    alert('Erro ao conectar com o Broker MQTT:', err);
-});
+client.on('connect', () => setInterval(sendGeolocation, 10000));
 
-client.on('connect', () => {
-    const interval = setInterval(() => {
-        geo.updateLocation();
-        client.publish('geolocation', JSON.stringify(geo));
-        console.log(`Enviando localização! (${geo.latitude}, ${geo.logitude})`);
-    }, 30000);
-});
+client.on('error', err => alert('Erro ao conectar com o Broker MQTT:', err));
 
 const findButton = document.getElementById("findButton");
 
-findButton.onclick = () => {
-    geo.updateLocation();
-    client.publish('geolocation', JSON.stringify(geo));
-    console.log(`Enviando localização! (${geo.latitude}, ${geo.logitude})`);
-}
+findButton.onclick = sendGeolocation
