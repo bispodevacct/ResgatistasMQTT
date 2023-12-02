@@ -14,14 +14,6 @@ class Geo {
             });
         }
     }
-
-    getLatitude() {
-        return this.latitude;
-    }
-
-    getLongitude() {
-        return this.longitude;
-    }
 }
 
 export default Geo;
