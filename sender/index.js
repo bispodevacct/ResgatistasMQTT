@@ -1,7 +1,7 @@
 import credentials from "../credentials.js";
 import Geo from "./classes/Geo.js";
 
-const {username, password} = credentials;
+const {username, password, hivemq} = credentials;
 
 const options = {
     username,
@@ -9,7 +9,7 @@ const options = {
     clientId: `mqttjs_${Math.random().toString(16).substr(2, 8)}`,
 }
 
-const client = mqtt.connect('wss://5c79ee7cca8f4bd19e3eabbcd01f27a0.s2.eu.hivemq.cloud:8884/mqtt', options);
+const client = mqtt.connect(hivemq, options);
 
 const geo = new Geo();
 
