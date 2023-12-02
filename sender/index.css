@@ -1,0 +1,36 @@
+.loader {
+	animation: spin 2s linear infinite;
+	border: 2rem solid #3498db;
+	border-radius: 50%;
+	border-top: 2rem solid white;
+	height: 160px;
+	width: 160px;
+}
+  
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+body{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+	justify-content: space-around;
+	width: 100dvw;
+}
+
+h1{
+	color: #3498db;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+#findButton{
+	color: white;
+	background: #3498db;
+	border: 0 solid;
+	border-radius: 1rem;
+	padding: 1rem;
+}
