@@ -34,3 +34,11 @@ h1{
 	border-radius: 1rem;
 	padding: 1rem;
 }
+
+#findButton:hover{
+	background: black;
+}
+
+#findButton:active{
+	background-color: yellow;
+}

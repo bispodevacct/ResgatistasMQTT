@@ -28,3 +28,9 @@ client.on('connect', () => {
 });
 
 const findButton = document.getElementById("findButton");
+
+findButton.onclick = () => {
+    geo.updateLocation();
+    client.publish('geolocation', JSON.stringify(geo));
+    console.log(`Enviando localização! (${geo.latitude}, ${geo.logitude})`);
+}
