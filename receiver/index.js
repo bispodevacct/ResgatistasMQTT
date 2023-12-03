@@ -17,6 +17,7 @@ client.on('connect', () => client.subscribe('geolocation'));
 client.on('message', (topic, mqttMessage) => {
     const {geolocation, message} = JSON.parse(mqttMessage.toString());
     const {latitude, longitude} = geolocation;
+    console.log(message)
     map.addCircle(latitude, longitude, message);
     
     //map.locate(latitude, longitude);
