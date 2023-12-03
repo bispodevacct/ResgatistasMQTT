@@ -1,14 +1,50 @@
-* {
-    padding: 0;
-    margin: 0;
+body{
+	background: #222;
+	display: flex;
+    flex-direction: column;
+	font-family: 'Nova Square', sans-serif;
+	height: 100vh;
+	height: 100dvh;
+	justify-content: center;
+	overflow: hidden;
+	width: 100vw;
+	width: 100dvw;
 }
 
-body {
-    display: flex;
-    justify-content: center;
+.loader {
+	animation: spin 3s cubic-bezier(0.3, 0.7, 1, 0.3) infinite;
+	border: 0.30rem dotted white;
+	border-top: 0.2rem dotted #3498db;
+	border-radius: 50%;
+	height: 2rem;
+	transition: border-color 0.2s ease, border-top 0.5s ease-in-out 0.2s;
+	width: 2rem;
+}
+  
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
 #map {
-    width: 100vw;
-    height: 100vh;
+    flex-grow: 1;
+}
+
+h1{
+	background-color: #3498db;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	font-size: 3rem;
+	font-weight: bold;
+	padding: 1rem;
+	width: calc(100vw-2rem);
+	width: calc(100dvw-2rem);
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }

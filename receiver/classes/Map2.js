@@ -13,16 +13,24 @@ class Map2 {
     }
 
     locate(latitude, longitude) {
-        this.map.setView([latitude, longitude], 4);
+        this.map.setView([latitude, longitude], 10);
     }
 
     addCircle(latitude, longitude, message) {
-        const c = L.circle([latitude, longitude], {
-            color: message ? 'green' : 'red',
-            fillColor: message ? 'green' : 'red',
+        const options = message ? {
+            color: 'yellow',
+            fillColor: 'yellow',
+            fillOpacity: 1,
+            radius: 10
+        } : {
+            color: 'red',
+            fillColor: 'red',
             fillOpacity: 0.1,
-            radius: message ? 25 : 50
-        })
+            radius: 50
+        }
+        
+        
+        const c = L.circle([latitude, longitude], options)
         if (message) {
             c.bindPopup(message);
             /*this.circleLayer.clearLayers();*/

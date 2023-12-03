@@ -12,6 +12,7 @@ const options = {
 const client = mqtt.connect(hivemq, options);
 
 const map = new Map2();
+map.locate(-22.50300688591888, -41.923579532908015)
 
 client.on('connect', () => client.subscribe('geolocation'));
 client.on('message', (topic, mqttMessage) => {
