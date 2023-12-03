@@ -18,19 +18,20 @@ class Map2 {
 
     addCircle(latitude, longitude, message) {
         const c = L.circle([latitude, longitude], {
-            color: undefined,
-            fillColor: message ? 'red' : 'green',
-            fillOpacity: 1,
-            radius: message ? 50 : 10
+            color: message ? 'green' : 'red',
+            fillColor: message ? 'green' : 'red',
+            fillOpacity: 0.1,
+            radius: message ? 25 : 50
         })
         if (message) {
-            c.bindPopup(message)
-            this.circleLayer.clearLayers();
+            c.bindPopup(message);
+            /*this.circleLayer.clearLayers();*/
         }
             
         //c.addTo(this.map);
         
         this.circleLayer.addLayer(c);
+        c.openPopup();
     }
 }
 
