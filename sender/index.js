@@ -13,18 +13,16 @@ const client = mqtt.connect(hivemq, options);
 
 const geolocation = new Geolocation();
 
-const sendGeolocation = () => {
+const sendGeolocation = (message) => {
 	const {latitude, longitude} = geolocation.updateLocation();
-	client.publish('geolocation', JSON.stringify(geolocation));
+	client.publish('geolocation', JSON.stringify({geolocation, message}));
 	console.log(`Enviando localização! (${latitude}, ${longitude})`);
 }
 
 client.subscribe('geolocation');
-
-client.on('connect', () => setInterval(sendGeolocation, 10000));
-
+client.on('connect', () => setInterval(sendGeolocation, 30000));
 client.on('error', err => alert('Erro ao conectar com o Broker MQTT:', err));
 
+const messageBox = document.getElementById("messageBox");
 const findButton = document.getElementById("findButton");
-
-findButton.onclick = sendGeolocation
+findButton.onclick = () => sendGeolocation(messageBox.value);

@@ -14,12 +14,11 @@ const client = mqtt.connect(hivemq, options);
 const map = new Map2();
 
 client.on('connect', () => client.subscribe('geolocation'));
-
-client.on('error', err => alert('Erro ao conectar com o Broker MQTT:', err));
-
-client.on('message', (topic, message) => {
-    const {latitude, longitude} = JSON.parse(message)
-
+client.on('message', (topic, mqttMessage) => {
+    const {geolocation, message} = JSON.parse(mqttMessage.toString());
+    const {latitude, longitude} = geolocation;
+    map.addCircle(latitude, longitude, message);
+    
     //map.locate(latitude, longitude);
-    map.addCircle(latitude, longitude);
 });
+client.on('error', err => alert('Erro ao conectar com o Broker MQTT:', err));

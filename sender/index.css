@@ -1,10 +1,20 @@
 .loader {
 	animation: spin 2s linear infinite;
-	border: 2rem solid #3498db;
+	border: 1rem dotted #3498db;
 	border-radius: 50%;
-	border-top: 2rem solid white;
-	height: 160px;
-	width: 160px;
+	border-top: 1rem dotted white;
+	height: 8rem;
+	width: 8rem;
+}
+
+.loading {
+	align-items: center;
+	color: #3498db;
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	font-size: 2rem;
+	gap: 1rem;
 }
   
 @keyframes spin {
@@ -15,24 +25,37 @@
 body{
 	align-items: center;
 	display: flex;
-	flex-direction: column;
+	height: 100vh;
 	height: 100dvh;
-	justify-content: space-around;
+	justify-content: center;
+	overflow: hidden;
+	width: 100vw;
 	width: 100dvw;
 }
 
 h1{
-	color: #3498db;
-	font-size: 1.5rem;
+	color: white;
+	font-size: 4rem;
 	font-weight: bold;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	background-color: #3498db;
+	width: 100vw;
+	width: 100dvw;
 }
 
 #findButton{
 	color: white;
 	background: #3498db;
 	border: 0 solid;
-	border-radius: 1rem;
+	border-radius: 50%;
+	height: 4rem;
 	padding: 1rem;
+	width: 4rem;
+	margin: 0.5rem;
 }
 
 #findButton:hover{
@@ -41,4 +64,23 @@ h1{
 
 #findButton:active{
 	background-color: yellow;
+}
+
+#messageBox{
+	border: 0;
+	color: gray;
+	flex-grow: 1;
+    outline: 0;
+	padding: 0 0.5rem;
+	resize: none;
+}
+
+.chat{
+	bottom: 0;
+	border-top: 1px solid #3498db;
+	display: flex;
+	height: 5rem;
+	position: absolute;
+	width: 100vw;
+	width: 100dvw;
 }
