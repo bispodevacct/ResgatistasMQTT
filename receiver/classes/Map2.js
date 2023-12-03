@@ -14,13 +14,16 @@ class Map2 {
         this.map.setView([latitude, longitude], 4);
     }
 
-    addCircle(latitude, longitude) {
-        L.circle([latitude, longitude], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.1,
-            radius: 50
-        }).addTo(this.map);
+    addCircle(latitude, longitude, message) {
+        const c = L.circle([latitude, longitude], {
+            color: undefined,
+            fillColor: message ? 'red' : 'green',
+            fillOpacity: 0.5,
+            radius: message ? 50 : 5
+        })
+        if (message)
+            c.bindPopup(message)
+        c.addTo(this.map);
     }
 }
 
