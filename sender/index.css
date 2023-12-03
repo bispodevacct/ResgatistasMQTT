@@ -13,7 +13,7 @@
 	display: flex;
 	flex-direction: column;
 	font-weight: bold;
-	font-size: 2rem;
+	font-size: 1rem;
 	gap: 1rem;
 }
   
@@ -25,6 +25,7 @@
 body{
 	align-items: center;
 	display: flex;
+	font-family: 'Nova Square', sans-serif;
 	height: 100vh;
 	height: 100dvh;
 	justify-content: center;
@@ -35,7 +36,7 @@ body{
 
 h1{
 	color: white;
-	font-size: 4rem;
+	font-size: 3rem;
 	font-weight: bold;
 	position: absolute;
 	top: 0;
@@ -53,17 +54,18 @@ h1{
 	border: 0 solid;
 	border-radius: 50%;
 	height: 4rem;
+	font-size: 1.5rem;
 	padding: 1rem;
 	width: 4rem;
 	margin: 0.5rem;
 }
 
 #findButton:hover{
-	background: black;
+	background: blue;
 }
 
 #findButton:active{
-	background-color: yellow;
+	background-color: black;
 }
 
 #messageBox{
