@@ -7,6 +7,8 @@ class Map2 {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(this.map);
 
+        this.circleLayer = L.layerGroup().addTo(this.map);
+
         this.locate(0, 0);
     }
 
@@ -18,12 +20,17 @@ class Map2 {
         const c = L.circle([latitude, longitude], {
             color: undefined,
             fillColor: message ? 'red' : 'green',
-            fillOpacity: 0.5,
-            radius: message ? 50 : 5
+            fillOpacity: 1,
+            radius: message ? 50 : 10
         })
-        if (message)
+        if (message) {
             c.bindPopup(message)
-        c.addTo(this.map);
+            this.circleLayer.clearLayers();
+        }
+            
+        //c.addTo(this.map);
+        
+        this.circleLayer.addLayer(c);
     }
 }
 
